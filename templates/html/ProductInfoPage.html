@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <title>Olive for All🍏</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/ProductInfoPage.css') }}"
+    />
+  </head>
+  <body>
+    <section>
+      <div class="circle"></div>
+      <header>
+        <a href="#"
+          ><img src="../static/assets/images/olive1.png" class="logo"
+        /></a>
+        <div class="toggle" onclick="toggleMenu();"></div>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Menu</a></li>
+        </ul>
+      </header>
+      <div class="main-wrapper">
+        <div class="container">
+          <div class="product-div">
+            <div class="product-div-left">
+              <div class="img-container">
+                <img src="{{result['img_url']}}" alt="official image" />
+              </div>
+            </div>
+            <div class="product-div-right">
+              <span class="product-name">👑{{result['name']}}</span>
+              <span class="product-price"
+                >👑올리브영 판매가 : {{result['price']}}원</span
+              >
+              <p style="font-size: x-small">
+                *세일 등 혜택 정보에 따라 실제 판매가와 다를 수 있음
+              </p>
+              <div class="product-rating">
+                <span style="color: #ee99a0"><i class="fas fa-star"></i></span>
+                <span style="color: #ee99a0"><i class="fas fa-star"></i></span>
+                <span style="color: #ee99a0"><i class="fas fa-star"></i></span>
+                <span style="color: #ee99a0"><i class="fas fa-star"></i></span>
+                <span style="color: #ee99a0"
+                  ><i class="fas fa-star-half-alt"></i
+                ></span>
+                <span>{{result['star']}} / 5</span>
+              </div>
+              <div class="btn-groups">
+                <a
+                  href="https://www.oliveyoung.co.kr/store/goods/{{result['url']}}"
+                  target="_blank"
+                  ><button type="button" class="add-cart-btn">
+                    <i class="fas fa-shopping-cart"></i> 구매하러 가기
+                  </button></a
+                >
+                <button
+                  type="button"
+                  class="buy-now-btn"
+                  onclick="window.location.href='/upload'"
+                >
+                  <i class="fas fa-wallet"></i> 다시 검색하기
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 여기부터는 review 내용 -->
+
+          <div class="review-box">
+            <h2 class="review-box-title">📣ONE LINE REVIEW📣</h2>
+            <p class="review-box-text1">
+              "필요한 내용만 빠르게 확인하는 올리브영 찐리뷰!" <br />
+              올리브영 온라인몰의 후기들을<br />AI가 한 문장으로 추출요약해드려요.
+            </p>
+            <div class="review-box-emotion">
+              <div class="review-positive">
+                <v-col
+                  ><img
+                    class="img_emoji"
+                    src="../static/assets/images/emoji_good.png"
+                    alt="emojy_good"
+                  />
+                  <h2>"이래서 좋아요!"</h2>
+                  <v-col>
+                    <br /><br />
+                    <div class="review-positive-content">
+                      <div class="container-reviewBox-p">
+                        {% for rv in result['review_p'][:15] %}
+                        <div class="box-review">{{rv}}</div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </v-col>
+                </v-col>
+              </div>
+              <div class="review-negative">
+                <v-col class="vcol-bad"
+                  ><img
+                    class="img_emoji"
+                    src="../static/assets/images/emoji_bad.png"
+                    alt="emojy_bad"
+                  />
+                  <h2>"이래서 아쉬워요!"</h2>
+                  <v-col>
+                    <br /><br />
+                    <div class="review-negative-content">
+                      <div class="container-reviewBox-n">
+                        {% for rv in result['review_n'][:15] %}
+                        <div class="box-review">{{rv}}</div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </v-col>
+                </v-col>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/ProductInfoPage.js') }}"
+    ></script>
+  </body>
+</html>

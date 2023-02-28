@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olive for All🍏-메인페이지</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/MainPage.css') }}"
+    />
+  </head>
+  <body>
+    <section>
+      <div class="circle"></div>
+      <header>
+        <a href="#"
+          ><img src="../../static/assets/images/olive1.png" class="logo"
+        /></a>
+        <div class="toggle" onclick="toggleMenu();"></div>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Menu</a></li>
+        </ul>
+      </header>
+      <div class="content">
+        <div class="textBox">
+          <h2>
+            카메라로 찰칵!📷<br />AI가 찾아주고 요약해주는<br />It's
+            <span>Olive for All🍏</span>
+          </h2>
+          <p>
+            올리브영 판매 제품을 사진찍어 업로드하면, AI가 사진 속 제품을
+            분석하여 알아내고 제품의 실제 사용 후기들을 한줄로 핵심요약하여
+            알려드려요! 지금 바로 이용해보세요 :)
+          </p>
+          <a href="/upload">이미지로 검색하러 가기</a>
+        </div>
+        <div class="imgBox">
+          <img
+            src="../../static/assets/images/shopping1.png"
+            imgs
+            class="starbucks"
+          />
+        </div>
+      </div>
+      <ul class="thumb">
+        <li>
+          <img
+            src="../../static/assets/images/olive1.png"
+            onclick="imgSlider('../../static/assets/images/shopping1.png');
+                changeCircleColor('#BFDB38');"
+          />
+        </li>
+        <li>
+          <img
+            src="../../static/assets/images/olive2.png"
+            onclick="
+                imgSlider('../../static/assets/images/shopping2.png');
+                changeCircleColor('#FC7300');
+              "
+          />
+        </li>
+        <li>
+          <img
+            src="../../static/assets/images/olive4.png"
+            onclick="
+                imgSlider('../../static/assets/images/shopping3.png');
+                changeCircleColor('#1F8A70');
+              "
+          />
+        </li>
+      </ul>
+      <!-- <ul class="sci">
+        <li>
+          <a href="#"><img src="../../static/assets/images/facebook.png" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="../../static/assets/images/twitter.png" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="../../static/assets/images/instagram.png" /></a>
+        </li>
+      </ul> -->
+    </section>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/MainPage.js') }}"
+    ></script>
+  </body>
+</html>

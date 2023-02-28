@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Photo</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/view_photo.css') }}"
+    />
+  </head>
+  <body>
+    <h1>View Photo</h1>
+    {% if photo %}
+    <img
+      src="{{ url_for('get_photo', photo_id=photo.id) }}"
+      alt="{{ photo.filename }}"
+    />
+    <p>Filename: {{ photo.filename }}</p>
+    <p>Uploaded at: {{ photo.upload_date.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    {% else %}
+    <p>Photo not found.</p>
+    {% endif %}
+    <p><a href="{{ url_for('upload_photo') }}">Upload another photo</a></p>
+  </body>
+</html>

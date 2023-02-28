@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Olive for All🍏</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/ImageUpload.css') }}"
+    />
+  </head>
+  <body>
+    <h1>이미지 업로드하기</h1>
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+    <form
+      method="post"
+      action="{{ url_for('upload') }}"
+      enctype="multipart/form-data"
+      onsubmit="return validateForm()"
+    >
+      <label for="photo">Photo:</label>
+      <input type="file" accept="image/*" id="photo" name="photo" />
+      <img
+        id="preview"
+        src="#"
+        alt="Image Preview"
+        style="display: none; max-width: 300px; max-height: 300px"
+      />
+      <br /><br />
+      <div>
+        <input type="submit" value="Upload" />
+        <p>
+          *업로드한 이미지는 저장되었다가 보다 나은 성능을 위해 AI가 학습한 이후
+          삭제됩니다.
+        </p>
+      </div>
+      <div id="error-message"></div>
+    </form>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/ImageUpload.js') }}"
+    ></script>
+  </body>
+</html>
